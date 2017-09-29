@@ -1,9 +1,11 @@
 var ResourceEnum = {
     MEMORY: 0,
     CPU: 1,
+    MEMORY_RESERVATION: 2,
     properties: {
         0: {name: "memory", value: 0, label: "Memory"},
-        1: {name: "cpu", value: 1, label: "CPU"}
+        1: {name: "cpu", value: 1, label: "CPU"},
+        2: {name: "memoryReservation", value: 2, label: "MemoryReservation"}
     }
 };
 

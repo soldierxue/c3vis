@@ -80,8 +80,8 @@ router.get('/api/instance_summaries_with_tasks', function (req, res, next) {
                 return {
                   "ec2IpAddress": ec2IpAddress,
                   "ec2InstanceId": instance.ec2InstanceId,
-                  "ec2InstanceConsoleUrl": "https://console.aws.amazon.com/ec2/v2/home?region=" + AWS.config.region + "#Instances:instanceId=" + instance.ec2InstanceId,
-                  "ecsInstanceConsoleUrl": "https://console.aws.amazon.com/ecs/home?region=" + AWS.config.region + "#/clusters/" + cluster + "/containerInstances/" + instance["containerInstanceArn"].substring(instance["containerInstanceArn"].lastIndexOf("/") + 1),
+                  "ec2InstanceConsoleUrl": "https://console.amazonaws.cn/ec2/v2/home?region=" + AWS.config.region + "#Instances:instanceId=" + instance.ec2InstanceId,
+                  "ecsInstanceConsoleUrl": "https://console.amazonaws.cn/ecs/home?region=" + AWS.config.region + "#/clusters/" + cluster + "/containerInstances/" + instance["containerInstanceArn"].substring(instance["containerInstanceArn"].lastIndexOf("/") + 1),
                   "registeredCpu": utils.registeredCpu(instance),
                   "registeredMemory": utils.registeredMemory(instance),
                   "remainingCpu": utils.remainingCpu(instance),

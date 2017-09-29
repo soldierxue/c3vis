@@ -61,7 +61,12 @@ function copyToClipboard(text) {
 }
 
 function addD3DataToTask(task, resourceType, y0) {
-  var resourceAllocation = task.taskDefinition.containerDefinitions.reduce(function (sum, b) { return sum + (resourceType == ResourceEnum.MEMORY ? b.memory : b.cpu); }, 0);
+  var resourceAllocation1 = task.taskDefinition.containerDefinitions.reduce(function (sum, b) { return sum + (resourceType == ResourceEnum.MEMORY ? b.memory : b.cpu); }, 0);
+  var resourceAllocation2 = task.taskDefinition.containerDefinitions.reduce(function (sum, b) { return sum + (resourceType == ResourceEnum.MEMORY ? b.memoryReservation : b.cpu); }, 0);
+  
+  var resourceAllocation = isNaN(resourceAllocation1) || typeof(resourceAllocation1)=='undefined'? resourceAllocation2 : resourceAllocation1;
+  resourceAllocation = isNaN(resourceAllocation)  ? 0 : resourceAllocation;
+
   var y1 = y0 + resourceAllocation;
   task.d3Data = {
     name: taskFamilyAndRevision(task),
@@ -69,6 +74,7 @@ function addD3DataToTask(task, resourceType, y0) {
     y0: y0,
     y1: y1
   };
+
   return y1;
 }
 
